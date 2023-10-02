@@ -3,7 +3,7 @@ FROM alpine:latest
 LABEL author="alsemo@gmail.com"
 
 # Update APK
-RUN apk update
+RUN apk update && apk upgrade
 
 # Create fossil user
 RUN adduser -DH fossil
@@ -18,12 +18,12 @@ RUN mknod /opt/fossil/dev/urandom c 1 9
 RUN chown -R fossil:fossil /opt/fossil
 RUN chmod -R 666 /opt/fossil/dev/*
 
-# Copy fossil shell script
-COPY fossil.sh /usr/bin/fossil.sh
-RUN chmod +x /usr/bin/fossil.sh
-
 WORKDIR /opt/fossil
 
 EXPOSE 9000
 
-CMD /usr/bin/fossil.sh
+# Added entrypoint for fossil
+ENTRYPOINT [ "/usr/bin/fossil" ]
+
+# Run fossil server with scgi and repolist
+CMD [ "server", "--scgi", "--port", "9000", "--repolist", "/opt/fossil" ]
