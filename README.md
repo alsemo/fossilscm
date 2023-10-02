@@ -36,7 +36,7 @@ Now check the container's log and you should see this:
 
     Listening for SCGI requests on TCP port 9000
 
-This means the fossil server is running. Ensure that your Nginx has been configured accordingly. The first time you run this container, the fossil web will not be displayed. **DO NOT WORRY**, this is the default if there is no _.fossil file available in /opt/fossil folder. Upload your _.fossil file that you want to be served on the web into this docker's /opt/fossil folder and refresh your browser. It should work. No need to restart the Nginx nor the docker itself.
+This means the fossil server is running. Ensure that your Nginx has been configured accordingly. The first time you run this container, the fossil web will not be displayed. **DO NOT WORRY**, this is the default if there is no \_.fossil file available in /opt/fossil folder. Upload your \*.fossil file that you want to be served on the web into this docker's /opt/fossil folder and refresh your browser. It should work. No need to restart the Nginx nor the docker itself.
 
 **Updates**:
 
